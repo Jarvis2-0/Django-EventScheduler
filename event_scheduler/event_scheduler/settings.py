@@ -119,3 +119,16 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'event-list'
 LOGOUT_REDIRECT_URL = 'login'
+
+# Email (for development, log to console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Celery settings
+CELERY_BROKER_URL = 'redis://localhost:6379/0'   # assumes Redis running locally
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+# Use django-celery-beat for periodic tasks
+INSTALLED_APPS += ['django_celery_beat']

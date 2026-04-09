@@ -19,6 +19,7 @@
                             <strong>📅 Date:</strong> {{ event.date }}<br>
                             <strong>⏰ Time:</strong> {{ event.time }}<br>
                             <strong>📝 Description:</strong> {{ event.description|truncatewords:10 }}
+                            <strong>📁 Category:</strong> {{ event.category.name|default:"Uncategorized" }}
                         </p>
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'event-detail' event.pk %}" class="btn btn-sm btn-outline-primary">View</a>
