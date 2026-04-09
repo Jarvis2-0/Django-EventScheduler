@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}My Events{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My Events</h2>
+    <a href="{% url 'event-create' %}" class="btn btn-primary">+ New Event</a>
+</div>
+
+{% if events %}
+    <div class="row">
+        {% for event in events %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">
+                            <strong>📅 Date:</strong> {{ event.date }}<br>
+                            <strong>⏰ Time:</strong> {{ event.time }}<br>
+                            <strong>📝 Description:</strong> {{ event.description|truncatewords:10 }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'event-detail' event.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                            <a href="{% url 'event-update' event.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a href="{% url 'event-delete' event.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Created: {{ event.created_at|date:"M d, Y" }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info text-center">
+        <p>No events yet. <a href="{% url 'event-create' %}">Create your first event</a>.</p>
+    </div>
+{% endif %}
+{% endblock %}

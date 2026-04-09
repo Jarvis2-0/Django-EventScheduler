@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">{{ event.name }}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless">
+                    <tr>
+                        <th style="width: 120px;">Date:</th>
+                        <td>{{ event.date }}</td>
+                    </tr>
+                    <tr>
+                        <th>Time:</th>
+                        <td>{{ event.time }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th>
+                        <td>{{ event.description|linebreaks }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created:</th>
+                        <td>{{ event.created_at }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last updated:</th>
+                        <td>{{ event.updated_at }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex gap-2">
+                    <a href="{% url 'event-update' event.pk %}" class="btn btn-warning">✏️ Edit</a>
+                    <a href="{% url 'event-delete' event.pk %}" class="btn btn-danger">🗑️ Delete</a>
+                    <a href="{% url 'event-list' %}" class="btn btn-secondary">← Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
