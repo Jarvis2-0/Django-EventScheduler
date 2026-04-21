@@ -23,6 +23,16 @@
                         <th>Description:</th>
                         <td>{{ event.description|linebreaks }}</td>
                     </tr>
+
+                    <tr>
+                        <th>Reminder Status:</th>
+                        <td>
+                            <span class="badge {% if event.reminder_status == 'sent' %}bg-success{% elif event.reminder_status == 'failed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                {{ event.reminder_status|title }}
+                            </span>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>Created:</th>
                         <td>{{ event.created_at }}</td>
@@ -33,6 +43,9 @@
                     </tr>
                 </table>
             </div>
+
+            
+            
             <div class="card-footer">
                 <div class="d-flex gap-2">
                     <a href="{% url 'event-update' event.pk %}" class="btn btn-warning">✏️ Edit</a>

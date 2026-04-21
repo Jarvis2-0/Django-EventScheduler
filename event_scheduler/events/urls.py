@@ -5,6 +5,9 @@ from . import views
 urlpatterns = [
     path('', views.event_list, name='event-list'),
     path('register/', views.register, name='register'),
+    path('profile/', views.profile, name='profile'),
+    path('history/', views.event_history, name='event-history'),
+    path('admin-dashboard/', views.admin_dashboard, name='admin-dashboard'),
     path('event/new/', views.event_create, name='event-create'),
     path('event/<int:pk>/', views.event_detail, name='event-detail'),
     path('event/<int:pk>/update/', views.event_update, name='event-update'),

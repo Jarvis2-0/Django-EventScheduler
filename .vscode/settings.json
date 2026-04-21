@@ -5,6 +5,7 @@
         "reportUnknownVariableType": "none",
         "reportUnknownParameterType": "none",
         "reportUnknownMemberType": "none",
-        "reportUnknownArgumentType": "none"
+        "reportUnknownArgumentType": "none",
+        "reportMissingTypeArgument": "none"
     }
 }

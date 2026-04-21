@@ -6,6 +6,7 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>My Events</h2>
     <a href="{% url 'event-create' %}" class="btn btn-primary">+ New Event</a>
+    <a href="{% url 'event-history' %}" class="btn btn-info me-2">History</a>
 </div>
 
 {% if events %}
@@ -20,6 +21,10 @@
                             <strong>⏰ Time:</strong> {{ event.time }}<br>
                             <strong>📝 Description:</strong> {{ event.description|truncatewords:10 }}
                             <strong>📁 Category:</strong> {{ event.category.name|default:"Uncategorized" }}
+                            <strong>📧 Reminder:</strong> 
+                                <span class="badge {% if event.reminder_status == 'sent' %}bg-success{% elif event.reminder_status == 'failed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ event.reminder_status|title }}
+                                </span>
                         </p>
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'event-detail' event.pk %}" class="btn btn-sm btn-outline-primary">View</a>
